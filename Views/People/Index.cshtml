@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PeopleReg.Models.Person>
+
+<h4>Famous people</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Filter" method="post">
+            <input type="text" name="Filter" value="" placeholder="Enter searchstring" />
+            <input type="submit" name="submit" value="Search" />
+        </form>
+        <table class="table-bordered">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.MobilNum</td>
+                <td>@item.City</td>
+                <td>@Html.ActionLink("Delete", "Delete", "People", new { name = item.Name})</td>
+                <td>@Html.ActionLink("Create", "Create", "People")</td>
+                <td>@Html.ActionLink("Filter", "Filter", "People")</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        <form method="get" asp-action="Create">
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <form method="get" asp-action="Delete">
+
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <form method="get" asp-action="Edit">
+
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-dark"/>
+            </div>
+
+        </form>
+    </div>
+</div>
